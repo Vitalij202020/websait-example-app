@@ -6,6 +6,17 @@ import './Navbar.css'
 
 function Navbar() {
   const [click, setClick] = useState(false)
+  const [button, setButton] = useState(true)
+
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false)
+    } else {
+      setButton(true)
+    }
+  }
+
+  window.addEventListener('resize', showButton)
 
   const handleClick = () => setClick(!click)
   const closeMobileMenu = () => setClick(false)
@@ -41,7 +52,7 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          <Button buttonStyle="">Sing Up</Button>
+          {button && <Button buttonStyle="btn--outline">Sing Up</Button>}
         </div>
       </nav>
     </>
